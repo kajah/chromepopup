@@ -45,12 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }, false);
 });
 
+var close = document.getElementsByClassName("close");
+
 function show_todos() {
 	todos = get_todos();
+  console.log(todos);
 	for (i = 0; i < todos.length; i++) {
 		var li = document.createElement("li");
+		li.id = i;
 		var inputValue = todos[i];
-		console.log("inserting a todo");
+		console.log(inputValue);
 		var t = document.createTextNode(inputValue);
 		li.appendChild(t);
 		document.getElementById("myUL").appendChild(li);
@@ -61,42 +65,17 @@ function show_todos() {
 		span.appendChild(txt);
 		li.appendChild(span);
 
-		for (i = 0; i < close.length; i++) {
+		for (j = 0; j < close.length; j++) {
 			close[i].onclick = function() {
-		    	console.log(close[i]);
-		        var div = this.parentElement;
-		        div.style.display = "none";
-		        div.id = i;
-		    }
+			  var id = this.getAttribute('id');
+			  var todos = get_todos();
+			  todos.splice(id, 1);
+			  localStorage.setItem('todo', JSON.stringify(todos));
+		    var div = this.parentElement;
+		    div.style.display = "none";
+		  }
 		}
 	}
-}
-
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var id = this.getAttribute('id');
-    var todos = get_todos();
-    console.log(todos);
-    todos.splice(id, 1);
-    localStorage.setItem('todo', JSON.stringify(todos));
-
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
 }
 
 //Create a new list item when clicking on the "Add" button
@@ -105,12 +84,13 @@ function newElement() {
   var inputValue = document.getElementById("myInput").value;
 
   var todos = get_todos();
+  todo_id = todos.length;
   todos.push(inputValue);
   localStorage.setItem('todo', JSON.stringify(todos));
-  console.log(todos);
 
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
+  li.id = todo_id;
   if (inputValue === '') {
     alert("You must write something!");
   } else {
@@ -124,12 +104,14 @@ function newElement() {
   span.appendChild(txt);
   li.appendChild(span);
 
-  for (i = 0; i < close.length; i++) {
+  for (j = 0; j < close.length; j++) {
     close[i].onclick = function() {
-      console.log(close[i]);
-      var div = this.parentElement;
-      div.style.display = "none";
-      div.id = i;
+	    var id = this.getAttribute('id');
+	    var todos = get_todos();
+	    todos.splice(id, 1);
+	    localStorage.setItem('todo', JSON.stringify(todos));
+	    var div = this.parentElement;
+	    div.style.display = "none";
     }
   }
 }
