@@ -47,20 +47,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var close = document.getElementsByClassName("close");
 
+function find_index(task) {
+	var todos = get_todos();
+	var i;
+	for (i = 0; i < todos.length; i++) {
+		if(todos[i] === task) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 function close_helper(li) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
+  var todos = get_todos();
 
   for (j = 0; j < close.length; j++) {
     close[j].onclick = function() {
-	    var id = this.getAttribute('id');
-	    var todos = get_todos();
+	    var div = this.parentElement;
+	    var id = find_index(div.textContent.slice(0,div.textContent.length - 1));
 	    todos.splice(id, 1);
 	    localStorage.setItem('todo', JSON.stringify(todos));
-	    var div = this.parentElement;
 	    div.style.display = "none";
     }
   }
