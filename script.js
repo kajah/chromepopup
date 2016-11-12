@@ -24,28 +24,22 @@ chrome.topSites.get(function(mostVisitedURLs) {
 
 // Storing Tasks in Local DB
 function get_todos() {
-    var todos = new Array;
-    var todos_str = localStorage.getItem('todo');
-    if (todos_str !== null) {
-        todos = JSON.parse(todos_str); 
-    }
-    return todos;
+  var todos = new Array;
+  var todos_str = localStorage.getItem('todo');
+  if (todos_str !== null) {
+    todos = JSON.parse(todos_str); 
+  }
+  return todos;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  show_todos();
-  document.getElementById("newTask").addEventListener("click", newElement);
-
-  // Add a "checked" symbol when clicking on a list item
-  var list = document.querySelector('ul');
-  list.addEventListener('click', function(ev) {
-  	if (ev.target.tagName === 'LI') {
-  		ev.target.classList.toggle('checked');
-  	}
-  }, false);
-});
-
-var close = document.getElementsByClassName("close");
+function get_checked() {
+	var checked = new Array;
+	var checked_str = localStorage.getItem('checked');
+	if (checked_str != null) {
+		checked = JSON.parse(checked_str);
+	}
+	return checked;
+}
 
 function find_index(task) {
 	var todos = get_todos();
@@ -58,6 +52,25 @@ function find_index(task) {
 	return -1;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  show_todos();
+  document.getElementById("newTask").addEventListener("click", newElement);
+  var checked = get_checked();
+  // Add a "checked" symbol when clicking on a list item
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+  	if (ev.target.tagName === 'LI') {
+  		var div = ev.target;
+  		var index = find_index(div.textContent.slice(0,div.textContent.length - 1));
+  		checked[index] = ! checked[index];
+  		localStorage.setItem('checked', JSON.stringify(checked));
+  		div.classList.toggle('checked');
+  	}
+  }, false);
+});
+
+var close = document.getElementsByClassName("close");
+
 function close_helper(li) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
@@ -65,26 +78,32 @@ function close_helper(li) {
   span.appendChild(txt);
   li.appendChild(span);
   var todos = get_todos();
-
+  var checked = get_checked();
   for (j = 0; j < close.length; j++) {
     close[j].onclick = function() {
 	    var div = this.parentElement;
 	    var id = find_index(div.textContent.slice(0,div.textContent.length - 1));
 	    todos.splice(id, 1);
+	    checked.splice(id, 1);
 	    localStorage.setItem('todo', JSON.stringify(todos));
+	    localStorage.setItem('checked', JSON.stringify(checked));
 	    div.style.display = "none";
     }
   }
 }
 
 function show_todos() {
-	todos = get_todos();
+	var todos = get_todos();
+	var checked = get_checked();
 	for (i = 0; i < todos.length; i++) {
 		var li = document.createElement("li");
 		li.id = i;
 		var inputValue = todos[i];
 		var t = document.createTextNode(inputValue);
 		li.appendChild(t);
+		if (checked[i] == true) {
+			li.classList.toggle('checked');
+		}
 		document.getElementById("myUL").appendChild(li);
 		close_helper(li);
 	}
