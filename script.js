@@ -1,10 +1,9 @@
+// TopSites stuff
 function onAnchorClick(event) {
   chrome.tabs.create({ url: event.srcElement.href });
   return false;
 }
 
-
-// TopSites stuff
 chrome.topSites.get(function(mostVisitedURLs) {
 	var popupDiv = document.getElementById('mostVisited_div');
 	var ol = popupDiv.appendChild(document.createElement('ol'));
@@ -18,26 +17,39 @@ chrome.topSites.get(function(mostVisitedURLs) {
 	    a.addEventListener('click', onAnchorClick);
 	}
 });
+// end TopSites stuff
 
 
 // Todo List Stuff
+
+// Storing Tasks in Local DB
+function get_todos() {
+    var todos = new Array;
+    var todos_str = localStorage.getItem('todo');
+    if (todos_str !== null) {
+        todos = JSON.parse(todos_str); 
+    }
+    return todos;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("newTask").addEventListener("click", newElement);
 
   // Add a "checked" symbol when clicking on a list item
   var list = document.querySelector('ul');
   list.addEventListener('click', function(ev) {
+
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    console.log(todos);
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+
   	if (ev.target.tagName === 'LI') {
   		ev.target.classList.toggle('checked');
   	}
   }, false);
 });
-
-function checkToggle(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -64,6 +76,12 @@ for (i = 0; i < close.length; i++) {
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
+
+  var todos = get_todos();
+  todos.push(inputValue);
+  localStorage.setItem('todo', JSON.stringify(todos));
+  console.log(todos);
+
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
@@ -83,6 +101,15 @@ function newElement() {
     close[i].onclick = function() {
       var div = this.parentElement;
       div.style.display = "none";
+      div.id = i;
     }
   }
 }
+ 
+function remove() {
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+}
+// end Todo List Stuff
