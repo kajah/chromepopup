@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "Popup",
   "version": "1.0",
+  "options_page": "options.html",
   "description": "Functional sticky note",
   "icons": { "128": "mushroom.png" },
   "background": {
@@ -9,9 +10,9 @@
     "scripts": ["script.js"]
     
   },
-  "permissions": ["http://*.google.com/", "https://*.google.com/", "tabs", "topSites"],
+  "permissions": ["http://*.google.com/", "https://*.google.com/", "tabs", "topSites", "activeTab", "https://ajax.googleapis.com/"],
   "browser_action": {
-    "default_title": "",
+    "default_title": "Click here!",
     "default_icon": "king.png",
     "default_popup": "popup.html"
   }

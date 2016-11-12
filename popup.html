@@ -6,30 +6,38 @@
  -->
 <html>
 
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="assets/jquery-3.1.0.js"></script>
-    <script src="script.js"></script>
-  </head>
+    <head>
+        <title>Getting Started Extension's Popup</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="assets/jquery-3.1.0.js"></script>
+        <script src="script.js"></script>
+    </head>
 
-  <body>
-    <div id="topSites">
-      Top Sites:
-      <div id="mostVisited_div"></div>
-    </div>
+    <body>
+        <div id="options">Customize</div>
+        <button id="go-to-options">Go to options</button>
+
+        <div id="weather"></div>
+        <img src="icon.png", id="weatherIMG", alt="IMG">
+        <h1>Latest News</h1>
+        <div id="news"></div>
+        <img id="icon.png" hidden>
+
+        <div id="topSites">
+            Top Sites:
+            <div id="mostVisited_div"></div>
+        </div>
 
 
-    <div id="myDIV" class="header">
-      <h2>My To Do List</h2>
-      <div id="input-bar">
-        <input type="text" id="myInput" placeholder="Title...">
-        <a id="newTask" class="addBtn">Add</a>
-      </div>
-    </div>
+        <div id="myDIV" class="header">
+            <h2>My To Do List</h2>
+            <div id="input-bar">
+                <input type="text" id="myInput" placeholder="Title...">
+                <a id="newTask" class="addBtn">Add</a>
+            </div>
+        </div>
 
-    <ul id="myUL">
-    </ul>
+    <ul id="myUL"></ul>
     
   </body>
 
