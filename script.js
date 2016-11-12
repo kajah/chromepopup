@@ -33,23 +33,44 @@ function get_todos() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  show_todos();
   document.getElementById("newTask").addEventListener("click", newElement);
 
   // Add a "checked" symbol when clicking on a list item
   var list = document.querySelector('ul');
   list.addEventListener('click', function(ev) {
-
-    var id = this.getAttribute('id');
-    var todos = get_todos();
-    console.log(todos);
-    todos.splice(id, 1);
-    localStorage.setItem('todo', JSON.stringify(todos));
-
   	if (ev.target.tagName === 'LI') {
   		ev.target.classList.toggle('checked');
   	}
   }, false);
 });
+
+function show_todos() {
+	todos = get_todos();
+	for (i = 0; i < todos.length; i++) {
+		var li = document.createElement("li");
+		var inputValue = todos[i];
+		console.log("inserting a todo");
+		var t = document.createTextNode(inputValue);
+		li.appendChild(t);
+		document.getElementById("myUL").appendChild(li);
+
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		li.appendChild(span);
+
+		for (i = 0; i < close.length; i++) {
+			close[i].onclick = function() {
+		    	console.log(close[i]);
+		        var div = this.parentElement;
+		        div.style.display = "none";
+		        div.id = i;
+		    }
+		}
+	}
+}
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -67,6 +88,12 @@ var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    console.log(todos);
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+
     var div = this.parentElement;
     div.style.display = "none";
   }
@@ -99,17 +126,11 @@ function newElement() {
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
+      console.log(close[i]);
       var div = this.parentElement;
       div.style.display = "none";
       div.id = i;
     }
   }
-}
- 
-function remove() {
-    var id = this.getAttribute('id');
-    var todos = get_todos();
-    todos.splice(id, 1);
-    localStorage.setItem('todo', JSON.stringify(todos));
 }
 // end Todo List Stuff
