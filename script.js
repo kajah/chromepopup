@@ -3,6 +3,8 @@ function onAnchorClick(event) {
   return false;
 }
 
+
+// TopSites stuff
 chrome.topSites.get(function(mostVisitedURLs) {
 	var popupDiv = document.getElementById('mostVisited_div');
 	var ol = popupDiv.appendChild(document.createElement('ol'));
@@ -17,7 +19,25 @@ chrome.topSites.get(function(mostVisitedURLs) {
 	}
 });
 
+
 // Todo List Stuff
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("newTask").addEventListener("click", newElement);
+
+  // Add a "checked" symbol when clicking on a list item
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+  	if (ev.target.tagName === 'LI') {
+  		ev.target.classList.toggle('checked');
+  	}
+  }, false);
+});
+
+function checkToggle(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -40,15 +60,7 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
+//Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;

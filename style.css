@@ -26,9 +26,15 @@ a {
 
 a:hover {
 	background-color: lightblue;
+	transition:0.3s;
 }
 
 /*Tasks div*/
+
+#myUL {
+	width:100%;
+	background-color: green;
+}
 
 /* Include the padding and border in an element's total width and height */
 * {
@@ -43,6 +49,7 @@ ul {
 
 /* Style the list items */
 ul li {
+	width:100%;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -129,7 +136,7 @@ input {
 .addBtn {
     padding: 10px;
     width: 25%;
-    background: #d9d9d9;
+    background: #ddd;
     color: #555;
     float: left;
     text-align: center;
