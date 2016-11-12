@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Popup",
+  "version": "1.0",
+  "description": "Functional sticky note",
+  "icons": { "128": "mushroom.png" },
+  "background": {
+    "persistent": false,
+    "scripts": ["script.js"]
+    
+  },
+  "permissions": ["http://*.google.com/", "https://*.google.com/", "tabs", "topSites"],
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "king.png",
+    "default_popup": "popup.html"
+  }
+
+}
