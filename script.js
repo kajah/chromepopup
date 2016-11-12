@@ -47,34 +47,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var close = document.getElementsByClassName("close");
 
+function close_helper(li) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (j = 0; j < close.length; j++) {
+    close[j].onclick = function() {
+	    var id = this.getAttribute('id');
+	    var todos = get_todos();
+	    todos.splice(id, 1);
+	    localStorage.setItem('todo', JSON.stringify(todos));
+	    var div = this.parentElement;
+	    div.style.display = "none";
+    }
+  }
+}
+
 function show_todos() {
 	todos = get_todos();
-  console.log(todos);
 	for (i = 0; i < todos.length; i++) {
 		var li = document.createElement("li");
 		li.id = i;
 		var inputValue = todos[i];
-		console.log(inputValue);
 		var t = document.createTextNode(inputValue);
 		li.appendChild(t);
 		document.getElementById("myUL").appendChild(li);
-
-		var span = document.createElement("SPAN");
-		var txt = document.createTextNode("\u00D7");
-		span.className = "close";
-		span.appendChild(txt);
-		li.appendChild(span);
-
-		for (j = 0; j < close.length; j++) {
-			close[i].onclick = function() {
-			  var id = this.getAttribute('id');
-			  var todos = get_todos();
-			  todos.splice(id, 1);
-			  localStorage.setItem('todo', JSON.stringify(todos));
-		    var div = this.parentElement;
-		    div.style.display = "none";
-		  }
-		}
+		close_helper(li);
 	}
 }
 
@@ -98,21 +99,6 @@ function newElement() {
   }
   document.getElementById("myInput").value = "";
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (j = 0; j < close.length; j++) {
-    close[i].onclick = function() {
-	    var id = this.getAttribute('id');
-	    var todos = get_todos();
-	    todos.splice(id, 1);
-	    localStorage.setItem('todo', JSON.stringify(todos));
-	    var div = this.parentElement;
-	    div.style.display = "none";
-    }
-  }
+  close_helper(li);
 }
 // end Todo List Stuff
