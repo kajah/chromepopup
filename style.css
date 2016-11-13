@@ -38,7 +38,7 @@ body {
     transition: height 0.8s ease;
 }
 
-#snidden_content{
+#snhidden_content{
     height: 0;
     overflow: hidden;
     transition: height 0.8s ease;
