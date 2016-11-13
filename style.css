@@ -57,17 +57,16 @@ a:hover {
 
 /* Color Toggle div */
 #color-toggle {
-	background-color: blue;
-	width: 10px;
-	height: 10px;
+	width: 20px;
+	height: 20px;
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 10px;
+	margin: 5px;
 }
 
 #color-toggle:hover {
-	background-color: lightblue;
+	cursor: pointer;
 }
 /*Tasks div*/
 
