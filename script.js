@@ -218,12 +218,9 @@ document.addEventListener('DOMContentLoaded', function(){
     function myFunction(arr) {
         var out = "";
         console.log(arr['current_observation']["display_location"]["city"]);
-        out += arr['current_observation']["display_location"]["city"];  
-        out += "\n" 
-        out += arr['current_observation']["weather"];  
-        out += "\n";
-        out += arr['current_observation']["temperature_string"];                                        
-        document.getElementById("weather").innerHTML = out;
+        document.getElementById("weather").innerHTML =  arr['current_observation']["display_location"]["city"];  
+        document.getElementById("weather2").innerHTML =  arr['current_observation']["weather"];
+        document.getElementById("weather3").innerHTML = arr['current_observation']["temperature_string"]; 
         document.getElementById("weatherIMG").src = arr["current_observation"]["icon_url"];
     }
 });
@@ -287,11 +284,11 @@ window.onload = function(){
       var target = document.getElementById('snhidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide Latest News";
+          this.firstChild.nodeValue = "Hide Top Songs";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show Latest News";
+          this.firstChild.nodeValue = "Show Top Songs";
       }
     }
 }

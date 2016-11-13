@@ -38,9 +38,20 @@ body {
     transition: height 0.8s ease;
 }
 
+#snidden_content{
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+}
+
 #topstoriespad {
     padding: 20px;
     background-color: #dc8998;
+}
+
+#songspad {
+    padding: 20px;
+    background-color: #787fa1;
 }
 
 #lhidden_content{
