@@ -224,7 +224,64 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 
+window.onload = function(){
+  document.getElementById('wbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('whidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Weather";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Weather";
+      }
+    }
+
+    document.getElementById('sbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('shidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Top Sites";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Top Sites";
+      }
+    }
+
+    document.getElementById('lbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('lhidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide To Do List";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show To Do List";
+      }
+    }
+
+
+    document.getElementById('nbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('nhidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Latest News";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Latest News";
+      }
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function(){ 
+    var popupDiv = document.getElementById('news');
     var xmlhttp = new XMLHttpRequest();
     var url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=f18591ef19a34f3eb023911fbebffa16";
     xmlhttp.onreadystatechange = function() {
@@ -247,7 +304,8 @@ document.addEventListener('DOMContentLoaded', function(){
             a.appendChild(br);
             a.title = arr["articles"][i]["title"];
             a.href = arr["articles"][i]["url"];
-            document.body.appendChild(a);   
+            popupDiv.appendChild(a);
+
         }
         // document.getElementById("newsIMG").src = arr["articles"][i]["urlToImage"];
     }
