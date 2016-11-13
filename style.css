@@ -13,7 +13,7 @@ div {
 
 .icon {
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 50px;
     float: right;
     display: inline-block;
 }
@@ -68,7 +68,7 @@ div {
 
 #weather3 {
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 #shidden_content{
