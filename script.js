@@ -1,3 +1,8 @@
+// var simpleList = document.getElementById("simpleList");
+// Sortable.create(list);
+// Sortable.create(simpleList, { /* options */ });
+
+
 // Color Toggle Stuff
 function get_color() {
   var todos = true;
@@ -253,6 +258,11 @@ window.onload = function(){
           this.firstChild.nodeValue = "Show Top Songs";
       }
     }
+
+    var list = document.getElementById("widgetlist");
+    Sortable.create(list, {
+        
+    });
 }
 
 
@@ -307,6 +317,8 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 });
+
+
 
 
 // f18591ef19a34f3eb023911fbebffa16
