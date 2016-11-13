@@ -190,7 +190,7 @@ function newElement() {
 
 document.addEventListener('DOMContentLoaded', function(){ 
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://api.wunderground.com/api/0233c96d7f0837b9/conditions/q/CA/San_Francisco.json";
+    var url = "http://api.wunderground.com/api/0233c96d7f0837b9/conditions/q/CA/Berkeley.json";
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
