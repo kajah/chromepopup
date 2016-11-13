@@ -62,6 +62,20 @@ a:hover {
     transition:0.3s;
 }
 
+/* Color Toggle div */
+#color-toggle {
+	background-color: blue;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+}
+
+#color-toggle:hover {
+	background-color: lightblue;
+}
 /*Tasks div*/
 
 #myUL {
