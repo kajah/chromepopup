@@ -292,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function myFunction(arr) {
       var newsDiv = document.getElementById('news');
-      console.log(arr["results"].length);
       var ol = newsDiv.appendChild(document.createElement('ol'));
       for (var i = 0; i < 3; i++) {
             var li = ol.appendChild(document.createElement('li'));
@@ -311,7 +310,6 @@ document.addEventListener('DOMContentLoaded', function(){
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
             myFunction(myArr);
-            console.log(myArr);
         } 
     };
     xmlhttp.open("GET", url, true);
