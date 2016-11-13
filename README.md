@@ -1,5 +1,5 @@
 # chromepopup
-A Chrome extension popup with productivity widgets such as: Weather, Top Sites, To Do, Latest News, Trending Songs
+A Chrome extension popup with productivity widgets
 
 # usage
 - Download the repo
@@ -7,3 +7,12 @@ A Chrome extension popup with productivity widgets such as: Weather, Top Sites, 
 - Check Developer Mode
 - Load the project folder as an unpacked extension
 - Enable the extension
+
+# features
+- Weather
+- Top Sites
+- To Do List
+- Latest News
+- Trending Songs
+- 2 Color Palette options
+- Customizable widget order by dragging/dropping
