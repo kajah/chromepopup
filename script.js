@@ -17,15 +17,15 @@ function colorSelector(curr_color) {
 	if (curr_color === true) {
 		color1 = "#787fa1";
 		color2 = "#718ec4";
-		color3 = "#dc8998";
-		color4 = "#fec5b9";
-		color5 = "#f1e0cd";
+		color4 = "#dc8998";
+		color5 = "#fec5b9";
+		color3 = "#f1e0cd";
 	} else {
 		color1 = "#BFD8D2";
 		color2 = "#576490";
-		color3 = "#7796CB";
-		color4 = "#C9CAD9";
-		color5 = "#FEDCD2";
+		color4 = "#7796CB";
+		color5 = "#C9CAD9";
+		color3 = "#FEDCD2";
 	}
 	document.getElementById("weatherpad").style.backgroundColor = color1;
 	document.getElementById("topsitespad").style.backgroundColor = color2;
