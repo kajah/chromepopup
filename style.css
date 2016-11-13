@@ -1,39 +1,74 @@
 body {
-	font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
     font-size: 100%;
     height: 100%;
     width: 400px;
 }
 
+.wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  width: auto;
+    
+  background-color: white;
+  margin: auto;
+}
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+
+  flex: 0 1 auto;
+}
+
 /* TopSites div */
 #topSites {
-	padding: 10px;
-	font-size: 14px;
+    flex: 0 1 auto;
+    padding: 10px;
+    overflow-wrap: break-word;
+    font-size: 14px;
+    background-color: gray;
+    width: 40%;
+    margin: 10px;
+    text-align: left;
 }
 
 #mostVisited_div {
-	line-height: 2;
+    line-height: 1.5;
+}
+
+#todolist {
+    flex: 2 1 auto;
+    background-color: gray;
+    margin: 10px;
+    width: 40%;
 }
 
 ol {
-	/* this is the numbers*/
+    /* this is the numbers*/
+    margin-left: -10px;
+    list-style-position: outside;
 }
 
 a {
-	text-decoration: none;
-	color: black;
+    text-decoration: none;
+    color: black;
 }
 
 a:hover {
-	background-color: lightblue;
-	transition:0.3s;
+    background-color: lightblue;
+    transition:0.3s;
 }
 
 /*Tasks div*/
 
 #myUL {
-	width:100%;
-	background-color: green;
+    list-style-type: none;
+    float: left;
+    text-align: left;
+    width:100%;
 }
 
 /* Include the padding and border in an element's total width and height */
@@ -49,7 +84,7 @@ ul {
 
 /* Style the list items */
 ul li {
-	width:100%;
+    width:100%;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -111,8 +146,14 @@ ul li.checked::before {
 /* Style the header */
 .header {
     background-color: #f44336;
-    padding: 30px 40px;
+    padding: 10px;
     color: white;
+    text-align: center;
+}
+
+.title {
+    font-size: 18px;
+    padding-bottom: 5px;
     text-align: center;
 }
 
@@ -140,7 +181,7 @@ input {
     color: #555;
     float: left;
     text-align: center;
-    font-size: 16px;
+    font-size: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
