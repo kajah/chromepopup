@@ -281,6 +281,19 @@ window.onload = function(){
           this.firstChild.nodeValue = "Show Latest News";
       }
     }
+
+    document.getElementById('snbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('snhidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Latest News";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Latest News";
+      }
+    }
 }
 
 
