@@ -295,15 +295,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function myFunction(arr) {
       var newsDiv = document.getElementById('news');
+      console.log(arr["results"].length);
       var ol = newsDiv.appendChild(document.createElement('ol'));
       for (var i = 0; i < 3; i++) {
-          var li = ol.appendChild(document.createElement('li'));
-          var a = li.appendChild(document.createElement('a'));
-          a.href = arr["results"][i]["url"];
-          a.appendChild(document.createTextNode(arr["results"][i]["title"]));
-          a.addEventListener('click', onAnchorClick);
-      }
-  	}
+            var li = ol.appendChild(document.createElement('li'));
+            var a = li.appendChild(document.createElement('a'));
+            a.href = arr["results"][i]["url"];
+            a.appendChild(document.createTextNode(arr["results"][i]["title"]));
+            a.addEventListener('click', onAnchorClick);
+        }
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function(){ 
