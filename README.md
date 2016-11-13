@@ -1,5 +1,5 @@
 # chromepopup
-A Chrome extension
+A Chrome extension popup with productivity widgets such as: Weather, Top Sites, To Do, Latest News, Trending Songs
 
 # usage
 - Download the repo
