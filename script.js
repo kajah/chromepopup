@@ -59,7 +59,7 @@ function onAnchorClick(event) {
 chrome.topSites.get(function(mostVisitedURLs) {
 	var popupDiv = document.getElementById('mostVisited_div');
 	var ol = popupDiv.appendChild(document.createElement('ol'));
-	var numURLs = Math.min(mostVisitedURLs.length, 3);
+	var numURLs = Math.min(mostVisitedURLs.length, 5);
 
 	for (var i = 0; i < numURLs; i++) {
 	    var li = ol.appendChild(document.createElement('li'));
