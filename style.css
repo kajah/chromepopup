@@ -7,6 +7,10 @@ body {
     overflow: scroll;
 }
 
+div {
+	overflow: scroll;
+}
+
 .icon {
     margin-top: 10px;
     margin-left: 20px;
@@ -131,8 +135,8 @@ body {
     line-height: 1.5;
 }
 
-ol {
-    /* this is the numbers*/
+*:focus {
+	outline: 0;
 }
 
 a {
