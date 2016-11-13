@@ -7,10 +7,6 @@ body {
     overflow: scroll;
 }
 
-div {
-	overflow: scroll;
-}
-
 .icon {
     margin-top: 10px;
     margin-left: 50px;
