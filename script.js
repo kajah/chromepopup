@@ -22,11 +22,25 @@ function switchColor() {
 	console.log(curr_color);
 
 	if (curr_color === true) {
-		new_background = 'lightgray';
+		color1 = "#787fa1";
+		color2 = "#718ec4";
+		color3 = "#dc8998";
+		color4 = "#fec5b9";
+		color5 = "#f1e0cd";
 	} else {
-		new_background = 'white';
+		color1 = "#BFD8D2";
+		color2 = "#576490";
+		color3 = "#7796CB";
+		color4 = "#C9CAD9";
+		color5 = "#FEDCD2";
 	}
-	document.getElementsByTagName('body')[0].style.backgroundColor = new_background;
+	document.getElementById("weatherpad").style.backgroundColor = color1;
+	document.getElementById("topsitespad").style.backgroundColor = color2;
+	document.getElementById("songspad").style.backgroundColor = color3;
+	document.getElementById("listpad").style.backgroundColor = color4;
+	document.getElementById("myDIV").style.backgroundColor = color3;
+	document.getElementById("topstoriespad").style.backgroundColor = color5;
+	document.getElementById("color-toggle").style.backgroundColor = color5;
 	localStorage.setItem('curr_color', JSON.stringify(! curr_color));
 }
 // end Color Toggle Stuff
@@ -269,7 +283,7 @@ window.onload = function(){
 document.addEventListener('DOMContentLoaded', function(){ 
     var popupDiv = document.getElementById('news');
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=f18591ef19a34f3eb023911fbebffa16";
+    var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=ece2c9475024433fa41ea3cf39e0f29d";
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
@@ -285,8 +299,8 @@ document.addEventListener('DOMContentLoaded', function(){
       for (var i = 0; i < 3; i++) {
           var li = ol.appendChild(document.createElement('li'));
           var a = li.appendChild(document.createElement('a'));
-          a.href = arr["articles"][i]["url"];
-          a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
+          a.href = arr["results"][i]["url"];
+          a.appendChild(document.createTextNode(arr["results"][i]["title"]));
           a.addEventListener('click', onAnchorClick);
       }
   	}

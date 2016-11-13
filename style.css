@@ -46,7 +46,7 @@ body {
 
 #topstoriespad {
     padding: 20px;
-    background-color: #f1dcd9;
+    background-color: #f1e0cd;
 }
 
 #songspad {
@@ -113,8 +113,9 @@ a:hover {
 	top: 0;
 	right: 0;
 	margin: 10px;
+    padding: 10px;
 	border-radius: 50%;
-	background-color: #f1dcd9;
+	background-color: #f1e0cd;
 }
 
 #color-toggle:hover {
@@ -202,7 +203,7 @@ ul li.checked::before {
 /* Style the header */
 .header {
 	margin-top: 10px;
-    background-color: #787fa1;
+    background-color: #dc8998;
     padding: 30px 40px;
     color: white;
     text-align: center;
