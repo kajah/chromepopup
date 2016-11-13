@@ -112,7 +112,9 @@ a:hover {
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 5px;
+	margin: 10px;
+	border-radius: 50%;
+	background-color: #f1dcd9;
 }
 
 #color-toggle:hover {
