@@ -324,7 +324,12 @@ document.addEventListener('DOMContentLoaded', function(){
             var li = ol.appendChild(document.createElement('li'));
             var a = li.appendChild(document.createElement('a'));
             a.href = arr.tracks.track[i].url;
-            a.appendChild(document.createTextNode(arr.tracks.track[i].name));
+            var textStuff = arr.tracks.track[i].name + " by " + arr.tracks.track[i].artist.name;
+            a.appendChild(document.createTextNode(textStuff));
+            // var DOM_img = document.createElement("img");
+            // console.log(arr.tracks.track[i].image[0]["#text"]);
+            // DOM_img.src = arr.tracks.track[i].image[0]["#text"];
+            // a.appendChild(DOM_img);
             a.addEventListener('click', onAnchorClick);
         }
     }
