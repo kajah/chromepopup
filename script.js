@@ -1,3 +1,32 @@
+// Color Toggle Stuff
+function get_color() {
+  var todos = true;
+  var todos_str = localStorage.getItem('curr_color');
+  if (todos_str !== null) {
+    todos = JSON.parse(todos_str); 
+  }
+  return todos;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('color-toggle').onclick = switchColor;
+});
+
+function switchColor() {
+	var curr_color = get_color();
+	console.log(curr_color);
+
+	if (curr_color === true) {
+		new_background = 'lightgray';
+	} else {
+		new_background = 'white';
+	}
+	document.getElementsByTagName('body')[0].style.backgroundColor = new_background;
+	localStorage.setItem('curr_color', JSON.stringify(! curr_color));
+}
+// end Color Toggle Stuff
+
+
 // TopSites stuff
 function onAnchorClick(event) {
   chrome.tabs.create({ url: event.srcElement.href });
@@ -24,28 +53,22 @@ chrome.topSites.get(function(mostVisitedURLs) {
 
 // Storing Tasks in Local DB
 function get_todos() {
-    var todos = new Array;
-    var todos_str = localStorage.getItem('todo');
-    if (todos_str !== null) {
-        todos = JSON.parse(todos_str); 
-    }
-    return todos;
+  var todos = new Array;
+  var todos_str = localStorage.getItem('todo');
+  if (todos_str !== null) {
+    todos = JSON.parse(todos_str); 
+  }
+  return todos;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  show_todos();
-  document.getElementById("newTask").addEventListener("click", newElement);
-
-  // Add a "checked" symbol when clicking on a list item
-  var list = document.querySelector('ul');
-  list.addEventListener('click', function(ev) {
-  	if (ev.target.tagName === 'LI') {
-  		ev.target.classList.toggle('checked');
-  	}
-  }, false);
-});
-
-var close = document.getElementsByClassName("close");
+function get_checked() {
+	var checked = new Array;
+	var checked_str = localStorage.getItem('checked');
+	if (checked_str != null) {
+		checked = JSON.parse(checked_str);
+	}
+	return checked;
+}
 
 function find_index(task) {
 	var todos = get_todos();
@@ -58,6 +81,25 @@ function find_index(task) {
 	return -1;
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  show_todos();
+  document.getElementById("newTask").addEventListener("click", newElement);
+  var checked = get_checked();
+  // Add a "checked" symbol when clicking on a list item
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+  	if (ev.target.tagName === 'LI') {
+  		var div = ev.target;
+  		var index = find_index(div.textContent.slice(0,div.textContent.length - 1));
+  		checked[index] = ! checked[index];
+  		localStorage.setItem('checked', JSON.stringify(checked));
+  		div.classList.toggle('checked');
+  	}
+  }, false);
+});
+
+var close = document.getElementsByClassName("close");
+
 function close_helper(li) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
@@ -65,26 +107,32 @@ function close_helper(li) {
   span.appendChild(txt);
   li.appendChild(span);
   var todos = get_todos();
-
+  var checked = get_checked();
   for (j = 0; j < close.length; j++) {
     close[j].onclick = function() {
 	    var div = this.parentElement;
 	    var id = find_index(div.textContent.slice(0,div.textContent.length - 1));
 	    todos.splice(id, 1);
+	    checked.splice(id, 1);
 	    localStorage.setItem('todo', JSON.stringify(todos));
+	    localStorage.setItem('checked', JSON.stringify(checked));
 	    div.style.display = "none";
     }
   }
 }
 
 function show_todos() {
-	todos = get_todos();
+	var todos = get_todos();
+	var checked = get_checked();
 	for (i = 0; i < todos.length; i++) {
 		var li = document.createElement("li");
 		li.id = i;
 		var inputValue = todos[i];
 		var t = document.createTextNode(inputValue);
 		li.appendChild(t);
+		if (checked[i] == true) {
+			li.classList.toggle('checked');
+		}
 		document.getElementById("myUL").appendChild(li);
 		close_helper(li);
 	}
@@ -180,7 +228,64 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 
+window.onload = function(){
+  document.getElementById('wbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('whidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Weather";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Weather";
+      }
+    }
+
+    document.getElementById('sbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('shidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Top Sites";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Top Sites";
+      }
+    }
+
+    document.getElementById('lbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('lhidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide To Do List";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show To Do List";
+      }
+    }
+
+
+    document.getElementById('nbutton').onclick = function() {
+      this.__toggle = !this.__toggle;
+      var target = document.getElementById('nhidden_content');
+      if( this.__toggle) {
+          target.style.height = target.scrollHeight+"px";
+          this.firstChild.nodeValue = "Hide Latest News";
+      }
+      else {
+          target.style.height = 0;
+          this.firstChild.nodeValue = "Show Latest News";
+      }
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function(){ 
+    var popupDiv = document.getElementById('news');
     var xmlhttp = new XMLHttpRequest();
     var url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=f18591ef19a34f3eb023911fbebffa16";
     xmlhttp.onreadystatechange = function() {
@@ -198,8 +303,13 @@ document.addEventListener('DOMContentLoaded', function(){
             var li = ol.appendChild(document.createElement('li'));
             var a = li.appendChild(document.createElement('a'));
             a.href = arr["articles"][i]["url"];
+<<<<<<< HEAD
             a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
             a.addEventListener('click', onAnchorClick);
+=======
+            popupDiv.appendChild(a);
+
+>>>>>>> a609b7ce4bf0f9564a00f3be6d42c15afd27cbbd
         }
     }
 });

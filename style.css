@@ -1,39 +1,79 @@
 body {
-	font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
     font-size: 100%;
     height: 100%;
     width: 400px;
 }
 
+#whidden_content{
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+}
+
+#shidden_content{
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+}
+
+#lhidden_content{
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+}
+
+#nhidden_content{
+    height: 0;
+    overflow: hidden;
+    transition: height 0.8s ease;
+}
+
+
+
 /* TopSites div */
 #topSites {
-	padding: 10px;
-	font-size: 14px;
+    padding: 10px;
+    font-size: 14px;
 }
 
 #mostVisited_div {
-	line-height: 2;
+    line-height: 2;
 }
 
 ol {
-	/* this is the numbers*/
+    /* this is the numbers*/
 }
 
 a {
-	text-decoration: none;
-	color: black;
+    text-decoration: none;
+    color: black;
 }
 
 a:hover {
-	background-color: lightblue;
-	transition:0.3s;
+    background-color: lightblue;
+    transition:0.3s;
 }
 
+/* Color Toggle div */
+#color-toggle {
+	background-color: blue;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+}
+
+#color-toggle:hover {
+	background-color: lightblue;
+}
 /*Tasks div*/
 
 #myUL {
-	width:100%;
-	background-color: green;
+    width:100%;
+    background-color: green;
 }
 
 /* Include the padding and border in an element's total width and height */
@@ -49,7 +89,7 @@ ul {
 
 /* Style the list items */
 ul li {
-	width:100%;
+    width:100%;
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
