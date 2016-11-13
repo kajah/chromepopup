@@ -1,8 +1,3 @@
-// var simpleList = document.getElementById("simpleList");
-// Sortable.create(list);
-// Sortable.create(simpleList, { /* options */ });
-
-
 // Color Toggle Stuff
 function get_color() {
   var todos = true;
@@ -274,9 +269,11 @@ window.onload = function(){
     }
 
     var list = document.getElementById("widgetlist");
-    Sortable.create(list, {
-        
-    });
+    Sortable.create(list, { });
+
+    var todolist = document.getElementById("myUL");
+    Sortable.create(todolist, { });
+
 }
 
 
