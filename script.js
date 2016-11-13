@@ -190,7 +190,7 @@ function newElement() {
 
 document.addEventListener('DOMContentLoaded', function(){ 
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://api.wunderground.com/api/0233c96d7f0837b9/conditions/q/CA/San_Francisco.json";
+    var url = "http://api.wunderground.com/api/0233c96d7f0837b9/conditions/q/CA/Berkeley.json";
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
@@ -203,7 +203,10 @@ document.addEventListener('DOMContentLoaded', function(){
     function myFunction(arr) {
         var out = "";
         console.log(arr['current_observation']["display_location"]["city"]);
-        document.getElementById("weather").innerHTML =  arr['current_observation']["display_location"]["city"];  
+        var blah1 = arr['current_observation']["display_location"]["city"]
+        var blah2 = arr['current_observation']["display_location"]["state"]
+        var blah3 = blah1 + ", " + blah2
+        document.getElementById("weather").innerHTML =  blah3;  
         document.getElementById("weather2").innerHTML =  arr['current_observation']["weather"];
         var blah = arr['current_observation']["temp_f"] + "&#x2109" + " " + "&nbsp";
         blah += arr['current_observation']["temp_c"] + "&#x2103";
