@@ -9,13 +9,11 @@ function get_color() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+	pickColor();
   document.getElementById('color-toggle').onclick = switchColor;
 });
 
-function switchColor() {
-	var curr_color = get_color();
-	console.log(curr_color);
-
+function colorSelector(curr_color) {
 	if (curr_color === true) {
 		color1 = "#787fa1";
 		color2 = "#718ec4";
@@ -36,6 +34,17 @@ function switchColor() {
 	document.getElementById("myDIV").style.backgroundColor = color3;
 	document.getElementById("topstoriespad").style.backgroundColor = color5;
 	document.getElementById("color-toggle").style.backgroundColor = color5;
+
+}
+
+function pickColor() {
+	var curr_color = ! get_color();
+	colorSelector(curr_color);
+}
+
+function switchColor() {
+	var curr_color = get_color();
+	colorSelector(curr_color);	
 	localStorage.setItem('curr_color', JSON.stringify(! curr_color));
 }
 // end Color Toggle Stuff
