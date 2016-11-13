@@ -259,7 +259,7 @@ window.onload = function(){
 document.addEventListener('DOMContentLoaded', function(){ 
     var popupDiv = document.getElementById('news');
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=f18591ef19a34f3eb023911fbebffa16";
+    var url = "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=ece2c9475024433fa41ea3cf39e0f29d";
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
@@ -275,8 +275,8 @@ document.addEventListener('DOMContentLoaded', function(){
       for (var i = 0; i < 3; i++) {
           var li = ol.appendChild(document.createElement('li'));
           var a = li.appendChild(document.createElement('a'));
-          a.href = arr["articles"][i]["url"];
-          a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
+          a.href = arr["results"][i]["url"];
+          a.appendChild(document.createTextNode(arr["results"][i]["title"]));
           a.addEventListener('click', onAnchorClick);
       }
   	}
