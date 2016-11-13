@@ -218,11 +218,11 @@ window.onload = function(){
       var target = document.getElementById('whidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide Weather";
+          //this.firstChild.nodeValue = "Hide Weather";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show Weather";
+          //this.firstChild.nodeValue = "Show Weather";
       }
     }
 
@@ -231,11 +231,11 @@ window.onload = function(){
       var target = document.getElementById('shidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide Top Sites";
+          //this.firstChild.nodeValue = "Hide Top Sites";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show Top Sites";
+          //this.firstChild.nodeValue = "Show Top Sites";
       }
     }
 
@@ -244,11 +244,11 @@ window.onload = function(){
       var target = document.getElementById('lhidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide To Do List";
+          //this.firstChild.nodeValue = "Hide To Do List";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show To Do List";
+          //this.firstChild.nodeValue = "Show To Do List";
       }
     }
 
@@ -258,11 +258,11 @@ window.onload = function(){
       var target = document.getElementById('nhidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide Latest News";
+          //this.firstChild.nodeValue = "Hide Latest News";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show Latest News";
+          //this.firstChild.nodeValue = "Show Latest News";
       }
     }
 
@@ -271,11 +271,11 @@ window.onload = function(){
       var target = document.getElementById('snhidden_content');
       if( this.__toggle) {
           target.style.height = target.scrollHeight+"px";
-          this.firstChild.nodeValue = "Hide Top Songs";
+          //this.firstChild.nodeValue = "Hide Top Songs";
       }
       else {
           target.style.height = 0;
-          this.firstChild.nodeValue = "Show Top Songs";
+          //this.firstChild.nodeValue = "Show Top Songs";
       }
     }
 
