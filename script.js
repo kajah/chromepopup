@@ -296,22 +296,18 @@ document.addEventListener('DOMContentLoaded', function(){
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-    function myFunction(arr) {
-        var newsDiv = document.getElementById('news');
-        var ol = newsDiv.appendChild(document.createElement('ol'));
-        for (var i = 0; i < 3; i++) {
-            var li = ol.appendChild(document.createElement('li'));
-            var a = li.appendChild(document.createElement('a'));
-            a.href = arr["articles"][i]["url"];
-<<<<<<< HEAD
-            a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
-            a.addEventListener('click', onAnchorClick);
-=======
-            popupDiv.appendChild(a);
 
->>>>>>> a609b7ce4bf0f9564a00f3be6d42c15afd27cbbd
-        }
-    }
+    function myFunction(arr) {
+      var newsDiv = document.getElementById('news');
+      var ol = newsDiv.appendChild(document.createElement('ol'));
+      for (var i = 0; i < 3; i++) {
+          var li = ol.appendChild(document.createElement('li'));
+          var a = li.appendChild(document.createElement('a'));
+          a.href = arr["articles"][i]["url"];
+          a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
+          a.addEventListener('click', onAnchorClick);
+      }
+  	}
 });
 
 document.addEventListener('DOMContentLoaded', function(){ 
@@ -343,4 +339,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // f18591ef19a34f3eb023911fbebffa16
 // Songs Key: 155c1541197e6602512b44c9a17a3dd7
+
 
