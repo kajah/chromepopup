@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function(){
             var li = ol.appendChild(document.createElement('li'));
             var a = li.appendChild(document.createElement('a'));
             a.href = arr.tracks.track[i].url;
-            var textStuff = arr.tracks.track[i].name + " by " + arr.tracks.track[i].artist.name;
+            var textStuff = arr.tracks.track[i].name + " - " + arr.tracks.track[i].artist.name;
             a.appendChild(document.createTextNode(textStuff));
             // var DOM_img = document.createElement("img");
             // console.log(arr.tracks.track[i].image[0]["#text"]);
