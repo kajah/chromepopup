@@ -13,7 +13,7 @@ body {
 
 #weatherpad {
     padding: 20px;
-    background-color: #718ec4;
+    background-color: #787fa1;
 }
 
 #weather {
@@ -46,12 +46,12 @@ body {
 
 #topstoriespad {
     padding: 20px;
-    background-color: #dc8998;
+    background-color: #f1dcd9;
 }
 
 #songspad {
     padding: 20px;
-    background-color: #787fa1;
+    background-color: #dc8998;
 }
 
 #lhidden_content{
@@ -62,7 +62,7 @@ body {
 
 #topsitespad {
     padding: 20px;
-    background-color: #fec5b9;
+    background-color: #718ec4;
 }
 
 #nhidden_content{
@@ -73,7 +73,7 @@ body {
 
 #listpad {
     padding: 20px;
-    background-color: #f1dcd9;
+    background-color: #fec5b9;
 }
 
 .button_style {
