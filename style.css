@@ -9,7 +9,7 @@ body {
 
 .icon {
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 30px;
     float: right;
     display: inline-block;
 }
@@ -238,7 +238,7 @@ ul li.checked::before {
 .header {
 	margin-top: 10px;
     background-color: #dc8998;
-    padding: 30px 40px;
+    padding: 20px 30px;
     color: white;
     text-align: center;
 }
