@@ -126,8 +126,8 @@ body {
     line-height: 1.5;
 }
 
-ol {
-    /* this is the numbers*/
+*:focus {
+    outline: 0;
 }
 
 a {
