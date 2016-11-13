@@ -7,6 +7,39 @@ body {
     overflow: scroll;
 }
 
+.icon {
+    margin-top: 10px;
+    margin-left: 20px;
+    float: right;
+    display: inline-block;
+}
+
+.wrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  width: auto;
+}
+
+.col {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column wrap;
+
+  flex: 0 1 auto;
+  margin: 10px;
+}
+
+.box {
+    width: 50px;
+    margin: 10px;
+    padding: 10px;
+    height: 50px;
+    background-color: gray;
+
+  flex: 0 1 auto;
+}
+
 #whidden_content{
     height: 0;
     overflow: hidden;
