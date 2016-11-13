@@ -205,7 +205,9 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(arr['current_observation']["display_location"]["city"]);
         document.getElementById("weather").innerHTML =  arr['current_observation']["display_location"]["city"];  
         document.getElementById("weather2").innerHTML =  arr['current_observation']["weather"];
-        document.getElementById("weather3").innerHTML = arr['current_observation']["temperature_string"]; 
+        var blah = arr['current_observation']["temp_f"] + "&#x2109" + " " ;
+        blah += arr['current_observation']["temp_c"] + "&#x2103";
+        document.getElementById("weather3").innerHTML = blah;
         document.getElementById("weatherIMG").src = arr["current_observation"]["icon_url"];
     }
 });

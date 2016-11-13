@@ -9,7 +9,7 @@ body {
 
 .icon {
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 20px;
     float: right;
     display: inline-block;
 }
@@ -63,6 +63,11 @@ body {
 }
 
 #weather3 {
+    text-align: center;
+    font-size: 40px;
+}
+
+#weather4 {
     text-align: center;
     font-size: 40px;
 }
@@ -126,13 +131,13 @@ body {
     line-height: 1.5;
 }
 
-*:focus {
-    outline: 0;
+ol {
+    /* this is the numbers*/
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 a:hover {
@@ -238,7 +243,7 @@ ul li.checked::before {
 .header {
 	margin-top: 10px;
     background-color: #dc8998;
-    padding: 20px 30px;
+    padding: 30px 40px;
     color: white;
     text-align: center;
 }
