@@ -17,11 +17,25 @@ function switchColor() {
 	console.log(curr_color);
 
 	if (curr_color === true) {
-		new_background = 'lightgray';
+		color1 = "#787fa1";
+		color2 = "#718ec4";
+		color3 = "#dc8998";
+		color4 = "#fec5b9";
+		color5 = "#f1e0cd";
 	} else {
-		new_background = 'white';
+		color1 = "#BFD8D2";
+		color2 = "#576490";
+		color3 = "#7796CB";
+		color4 = "#C9CAD9";
+		color5 = "#FEDCD2";
 	}
-	document.getElementsByTagName('body')[0].style.backgroundColor = new_background;
+	document.getElementById("weatherpad").style.backgroundColor = color1;
+	document.getElementById("topsitespad").style.backgroundColor = color2;
+	document.getElementById("songspad").style.backgroundColor = color3;
+	document.getElementById("listpad").style.backgroundColor = color4;
+	document.getElementById("myDIV").style.backgroundColor = color3;
+	document.getElementById("topstoriespad").style.backgroundColor = color5;
+	document.getElementById("color-toggle").style.backgroundColor = color5;
 	localStorage.setItem('curr_color', JSON.stringify(! curr_color));
 }
 // end Color Toggle Stuff
