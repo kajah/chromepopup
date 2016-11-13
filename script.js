@@ -155,31 +155,6 @@ function getImageUrl(searchTerm, callback, errorCallback) {
   x.send();
 }
 
-function renderStatus(statusText) {
-  // document.getElementById('status').textContent = statusText;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  //getWeather()
-  var url = "google.com"
-  getImageUrl(url, function(imageUrl, width, height) {
-    renderStatus('Search term: ' + url + '\n' +
-          'Google image search result: ' + imageUrl);
-    var imageResult = document.getElementById('image-result');
-      // Explicitly set the width/height to minimize the number of reflows. For
-      // a single image, this does not matter, but if you're going to embed
-      // multiple external images in your page, then the absence of width/height
-      // attributes causes the popup to resize multiple times.
-    imageResult.width = width;
-    imageResult.height = height;
-    imageResult.src = imageUrl;
-    imageResult.hidden = false;
-  }, function(errorMessage) {
-      console.log("message")
-    renderStatus('Cannot display image. ' + errorMessage);
-  });
-});
-
 document.addEventListener('DOMContentLoaded', function(){ 
     var xmlhttp = new XMLHttpRequest();
     var url = "http://api.wunderground.com/api/0233c96d7f0837b9/conditions/q/CA/San_Francisco.json";
@@ -211,39 +186,51 @@ document.addEventListener('DOMContentLoaded', function(){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
-            // console.log(myArr);
             myFunction(myArr);
         } 
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
     function myFunction(arr) {
-        var i;
-        for (i = 0; i < 3; i++) {
-            var a = document.createElement('a');
-            var br = document.createElement("br");
-            var linkText = document.createTextNode(arr["articles"][i]["title"]);
-            a.appendChild(linkText);
-            a.appendChild(br);
-            a.title = arr["articles"][i]["title"];
+        var newsDiv = document.getElementById('news');
+        var ol = newsDiv.appendChild(document.createElement('ol'));
+        for (var i = 0; i < 3; i++) {
+            var li = ol.appendChild(document.createElement('li'));
+            var a = li.appendChild(document.createElement('a'));
             a.href = arr["articles"][i]["url"];
-            document.body.appendChild(a);   
+            a.appendChild(document.createTextNode(arr["articles"][i]["title"]));
+            a.addEventListener('click', onAnchorClick);
         }
-        // document.getElementById("newsIMG").src = arr["articles"][i]["urlToImage"];
     }
 });
 
-document.querySelector('#go-to-options').addEventListener(function() {
-  if (chrome.runtime.openOptionsPage) {
-    // New way to open options pages, if supported (Chrome 42+).
-    chrome.runtime.openOptionsPage();
-  } else {
-    // Reasonable fallback.
-    window.open(chrome.runtime.getURL('options.html'));
-  }
+document.addEventListener('DOMContentLoaded', function(){ 
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&api_key=155c1541197e6602512b44c9a17a3dd7&format=json"
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            myFunction(myArr);
+            console.log(myArr);
+        } 
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    function myFunction(arr) {
+        var songsDiv = document.getElementById('songs');
+        var ol = songsDiv.appendChild(document.createElement('ol'));
+        for (var i = 0; i < 5; i++) {
+            console.log(arr.tracks.track[i].name);
+            var li = ol.appendChild(document.createElement('li'));
+            var a = li.appendChild(document.createElement('a'));
+            a.href = arr.tracks.track[i].url;
+            a.appendChild(document.createTextNode(arr.tracks.track[i].name));
+            a.addEventListener('click', onAnchorClick);
+        }
+    }
 });
 
-// f18591ef19a34f3eb023911fbebffa16
 
+// f18591ef19a34f3eb023911fbebffa16
+// Songs Key: 155c1541197e6602512b44c9a17a3dd7
 
