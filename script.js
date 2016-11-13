@@ -33,7 +33,7 @@ function colorSelector(curr_color) {
 	document.getElementById("listpad").style.backgroundColor = color4;
 	document.getElementById("myDIV").style.backgroundColor = color3;
 	document.getElementById("topstoriespad").style.backgroundColor = color5;
-	document.getElementById("color-toggle").style.backgroundColor = color5;
+	document.getElementById("color-toggle").style.backgroundColor = color1;
 
 }
 
