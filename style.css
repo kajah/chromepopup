@@ -149,7 +149,6 @@ a:hover {
 	right: 0;
 	margin: 15px;
 	border-radius: 50%;
-	background-color: #f1e0cd;
 }
 
 #color-toggle:hover {
@@ -159,7 +158,6 @@ a:hover {
 
 #myUL {
     width:100%;
-    background-color: green;
 }
 
 /* Include the padding and border in an element's total width and height */

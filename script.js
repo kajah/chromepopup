@@ -33,7 +33,6 @@ function colorSelector(curr_color) {
 	document.getElementById("listpad").style.backgroundColor = color4;
 	document.getElementById("myDIV").style.backgroundColor = color3;
 	document.getElementById("topstoriespad").style.backgroundColor = color5;
-	document.getElementById("color-toggle").style.backgroundColor = color1;
 
 }
 
@@ -140,6 +139,8 @@ function close_helper(li) {
 	    localStorage.setItem('todo', JSON.stringify(todos));
 	    localStorage.setItem('checked', JSON.stringify(checked));
 	    div.style.display = "none";
+	    var div2 = document.getElementById("myUL");
+    	div2.removeChild(div2.childNodes[id]);
     }
   }
 }
@@ -202,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function myFunction(arr) {
         var out = "";
-        console.log(arr['current_observation']["display_location"]["city"]);
         var blah1 = arr['current_observation']["display_location"]["city"]
         var blah2 = arr['current_observation']["display_location"]["state"]
         var blah3 = blah1 + ", " + blah2
@@ -215,79 +215,101 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 
+function get_opened() {
+  var opened = new Array;
+  var opened_str = localStorage.getItem('open_pads');
+  if (opened_str !== null) {
+    opened = JSON.parse(opened_str); 
+  } else {
+  	for (var i = 0; i < 5; i++) {
+  		opened.push("false");
+  	}
+  }
+  return opened;
+}
+
 window.onload = function(){
+
   document.getElementById('wbutton').onclick = function() {
-      this.__toggle = !this.__toggle;
-      var target = document.getElementById('whidden_content');
-      if( this.__toggle) {
-          target.style.height = target.scrollHeight+"px";
-          //this.firstChild.nodeValue = "Hide Weather";
-      }
-      else {
-          target.style.height = 0;
-          //this.firstChild.nodeValue = "Show Weather";
-      }
+  	var opened = get_opened();
+    this.__toggle = !this.__toggle;
+    var target = document.getElementById('whidden_content');
+    opened[0] = ! opened[0];
+  	localStorage.setItem('open_pads', JSON.stringify(opened));
+    if( this.__toggle) {
+      target.style.height = target.scrollHeight+"px";
+      //this.firstChild.nodeValue = "Hide Weather";
+    } else {
+      target.style.height = 0;
+      //this.firstChild.nodeValue = "Show Weather";
     }
+  }
 
-    document.getElementById('sbutton').onclick = function() {
-      this.__toggle = !this.__toggle;
-      var target = document.getElementById('shidden_content');
-      if( this.__toggle) {
-          target.style.height = target.scrollHeight+"px";
-          //this.firstChild.nodeValue = "Hide Top Sites";
-      }
-      else {
-          target.style.height = 0;
-          //this.firstChild.nodeValue = "Show Top Sites";
-      }
+  document.getElementById('sbutton').onclick = function() {
+  	var opened = get_opened();
+    this.__toggle = !this.__toggle;
+    var target = document.getElementById('shidden_content');
+    opened[1] = ! opened[1];
+  	localStorage.setItem('open_pads', JSON.stringify(opened));
+    if( this.__toggle) {
+      target.style.height = target.scrollHeight+"px";
+      //this.firstChild.nodeValue = "Hide Top Sites";
+    } else {
+      target.style.height = 0;
+      //this.firstChild.nodeValue = "Show Top Sites";
     }
+  }
 
-    document.getElementById('lbutton').onclick = function() {
-      this.__toggle = !this.__toggle;
-      var target = document.getElementById('lhidden_content');
-      if( this.__toggle) {
-          target.style.height = target.scrollHeight+"px";
-          //this.firstChild.nodeValue = "Hide To Do List";
-      }
-      else {
-          target.style.height = 0;
-          //this.firstChild.nodeValue = "Show To Do List";
-      }
+  document.getElementById('lbutton').onclick = function() {
+  	var opened = get_opened();
+    this.__toggle = !this.__toggle;
+    var target = document.getElementById('lhidden_content');
+    opened[2] = ! opened[2];
+  	localStorage.setItem('open_pads', JSON.stringify(opened));
+    if( this.__toggle) {
+      target.style.height = target.scrollHeight+"px";
+      //this.firstChild.nodeValue = "Hide To Do List";
+    } else {
+      target.style.height = 0;
+      //this.firstChild.nodeValue = "Show To Do List";
     }
+  }
 
-
-    document.getElementById('nbutton').onclick = function() {
-      this.__toggle = !this.__toggle;
-      var target = document.getElementById('nhidden_content');
-      if( this.__toggle) {
-          target.style.height = target.scrollHeight+"px";
-          //this.firstChild.nodeValue = "Hide Latest News";
-      }
-      else {
-          target.style.height = 0;
-          //this.firstChild.nodeValue = "Show Latest News";
-      }
+  document.getElementById('nbutton').onclick = function() {
+  	var opened = get_opened();
+    this.__toggle = !this.__toggle;
+    var target = document.getElementById('nhidden_content');
+    opened[3] = ! opened[3];
+  	localStorage.setItem('open_pads', JSON.stringify(opened));
+    if( this.__toggle) {
+      target.style.height = target.scrollHeight+"px";
+      //this.firstChild.nodeValue = "Hide Latest News";
+    } else {
+      target.style.height = 0;
+      //this.firstChild.nodeValue = "Show Latest News";
     }
+  }
 
-    document.getElementById('snbutton').onclick = function() {
-      this.__toggle = !this.__toggle;
-      var target = document.getElementById('snhidden_content');
-      if( this.__toggle) {
-          target.style.height = target.scrollHeight+"px";
-          //this.firstChild.nodeValue = "Hide Top Songs";
-      }
-      else {
-          target.style.height = 0;
-          //this.firstChild.nodeValue = "Show Top Songs";
-      }
+  document.getElementById('snbutton').onclick = function() {
+  	var opened = get_opened();
+    this.__toggle = !this.__toggle;
+    var target = document.getElementById('snhidden_content');
+    opened[4] = ! opened[4];
+  	localStorage.setItem('open_pads', JSON.stringify(opened));
+    if( this.__toggle) {
+      target.style.height = target.scrollHeight+"px";
+      //this.firstChild.nodeValue = "Hide Top Songs";
+    } else {
+      target.style.height = 0;
+      //this.firstChild.nodeValue = "Show Top Songs";
     }
+  }
 
-    var list = document.getElementById("widgetlist");
-    Sortable.create(list, { });
+  var list = document.getElementById("widgetlist");
+  Sortable.create(list, { });
 
-    var todolist = document.getElementById("myUL");
-    Sortable.create(todolist, { });
-
+  var todolist = document.getElementById("myUL");
+  Sortable.create(todolist, { });
 }
 
 
@@ -332,7 +354,6 @@ document.addEventListener('DOMContentLoaded', function(){
         var songsDiv = document.getElementById('songs');
         var ol = songsDiv.appendChild(document.createElement('ol'));
         for (var i = 0; i < 5; i++) {
-            console.log(arr.tracks.track[i].name);
             var li = ol.appendChild(document.createElement('li'));
             var a = li.appendChild(document.createElement('a'));
             a.href = arr.tracks.track[i].url;
@@ -347,6 +368,28 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 });
 
+setTimeout(function() {
+	var opened = get_opened();
+	var divs = document.getElementsByClassName("hidden");
+	for (var i = 0; i < divs.length; i++) {
+		if (opened[i] === true) {
+			if (i == 0) {
+				var thissle = document.getElementById('wbutton');
+			} else if (i == 1) {
+				var thissle = document.getElementById('sbutton');
+			} else if (i == 2) {
+				var thissle = document.getElementById('lbutton');
+			} else if (i == 3) {
+				var thissle = document.getElementById('nbutton');
+			} else {
+				var thissle = document.getElementById('snbutton');
+			}
+			var target = divs[i];
+			thissle.__toggle = !thissle.__toggle;
+	    target.style.height = target.scrollHeight+"px";
+	  }
+	}
+}, 300);
 
 
 
