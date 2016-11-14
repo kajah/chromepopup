@@ -222,9 +222,10 @@ function get_opened() {
     opened = JSON.parse(opened_str); 
   } else {
   	for (var i = 0; i < 5; i++) {
-  		opened.push("false");
+  		opened.push(false);
   	}
   }
+  console.log(opened_str);
   return opened;
 }
 
