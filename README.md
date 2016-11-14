@@ -2,7 +2,7 @@
 A Chrome extension popup with productivity widgets
 
 # usage
-- Download the repo
+- Download the zip
 - Go to chrome://extensions in your Chrome browser
 - Check Developer Mode
 - Load the project folder as an unpacked extension
